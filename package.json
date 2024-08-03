@@ -1,15 +1,19 @@
 {
-  "name": "nodejs",
+  "name": "submission",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "node": "node index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@types/node": "^18.0.6"
+    "@types/node": "^18.0.6",
+    "body-parser": "^1.20.2",
+    "express": "^4.19.2",
+    "nanoid": "^3.3.7"
   }
 }
