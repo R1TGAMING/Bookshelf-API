@@ -123,7 +123,20 @@ app.get("/books/:id", (req, res) => {
   }
 })
 
-app.put("books/:id", (req, res) => {
+/* app.put("books/:id", (req, res) => {
+  let finished = false
+  const date = new Date().toISOString()
+  const id = req.params.id;
+  const getDataId = receiveData.find((data) => {
+    return data.id === id
+  })
+
+  if (getDataId == undefined) {
+    res.status(404).json({
+      "status": "fail",
+    "message": "Gagal memperbarui buku. Id tidak ditemukan"
+    }) 
+  } else {
   const {
     
     name,
@@ -135,9 +148,47 @@ app.put("books/:id", (req, res) => {
     readPage,
     reading
     
-  } = req.body;
+  } = getDataId;
 
-  
+    
+  if (name) {
+    if (readPage > pageCount) {
+      res.status(400).json({
+        "status": "fail",
+    "message": "Gagal memperbarui buku. readPage tidak boleh lebih besar dari pageCount"
+      })
+    }
+    
+    res.status(200).json(getDataId)
+
+    
+  } else {
+    res.status(400).json({
+      "status": "fail",
+    "message": "Gagal memperbarui buku. Mohon isi nama buku"
+
+    })
+  }
+}
+}) */
+
+app.delete(("/books/:id"), (req, res) => {
+  const getId = req.params.id;
+  const getBooksId = receiveData.find((data) => {
+    return data.id === getId
+  })
+
+  if (getBooksId == undefined) {
+    res.status(404).json({
+      "status": "fail",
+    "message": "Buku gagal dihapus. Id tidak ditemukan"
+    })
+  } else {
+    req.status(200).json({
+      "status": "success",
+    "message": "Buku berhasil dihapus"
+    })
+  }
 })
 
 app.listen(PORT, () => {
